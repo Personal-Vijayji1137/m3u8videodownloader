@@ -44,6 +44,7 @@ export default function RootLayout({ children }) {
         <meta name='copyright' content='I Plus T Solution' />
         <meta name='identifier-URL' content='https://www.m3u8.iplust.in' />
         <link rel="canonical" href="https://www.m3u8.iplust.in" />
+        <meta name="google-site-verification" content="iwD0eTWm9aVBCqPmJiLYNn029CC-qUWZufvdoYmn0sc" />
         <meta name="googlebot-news" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta name="robots" content="noarchive" />
       </head>
