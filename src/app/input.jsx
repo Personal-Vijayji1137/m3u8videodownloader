@@ -133,10 +133,12 @@ export default function Input() {
         <script async="async" data-cfasync="false" src="//abberantdisheartenbandage.com/e58ce0f4dfcb3c0df3fcde599aeff023/invoke.js"></script>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-JNYGPW0TJD"></script>
         <script>
+            {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments)}
             gtag('js', new Date());
             gtag('config', 'G-JNYGPW0TJD');
+            `}
         </script>
     </>
 }
