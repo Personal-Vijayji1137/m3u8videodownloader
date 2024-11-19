@@ -130,6 +130,7 @@ export default function Input() {
             </div>
         )}
         <script type='text/javascript' src='//abberantdisheartenbandage.com/0f/10/03/0f1003b51551fc2a30e0df90f8558753.js'></script>
+        <script async="async" data-cfasync="false" src="//abberantdisheartenbandage.com/e58ce0f4dfcb3c0df3fcde599aeff023/invoke.js"></script>
     </>
 }
 
