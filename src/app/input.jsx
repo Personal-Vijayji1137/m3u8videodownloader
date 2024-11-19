@@ -1,9 +1,8 @@
 "use client"
 import styles from "./page.module.css";
 import Swal from 'sweetalert2'
-import { parse, types, stringify } from 'hls-parser';
 import { useEffect, useState } from "react";
-import { GenerateTokenFunction } from "./page";
+import { FetchM3U8URL, GenerateTokenFunction } from "./page";
 export default function Input() {
     const [progress, setProgress] = useState(null);
     const [url, setURL] = useState("");
@@ -23,32 +22,17 @@ export default function Input() {
             toast.onmouseleave = Swal.resumeTimer;
         }
     });
-    function getQualityLabel(resolution) {
-        if (!resolution) return 'Unknown';
-        const { height } = resolution;
-        if (height <= 240) return '240p';
-        if (height <= 360) return '360p';
-        if (height <= 480) return '480p';
-        if (height <= 720) return '720p';
-        if (height <= 1080) return '1080p';
-        if (height <= 1440) return '1440p';
-        return '2160p (4K)';
-    }
     const DownloadFile = async (e) => {
         e.preventDefault();
+        setProgress(null);
+        setplaylist([]);
+        setLogMessages("Please Wait ...");
+        setIsDownloading(false);
+        setdownloadLink(null)
         if (url.endsWith(".m3u8")) {
-            const response = await fetch(url);
-            const text = await response.text();
-            const parsed = parse(text);
-            if (parsed.isMasterPlaylist) {
-                let formats = parsed.variants.map((variant) => ({
-                    resolution: variant.resolution ? `${variant.resolution.width}x${variant.resolution.height}` : 'Unknown Resolution',
-                    bandwidth: variant.bandwidth,
-                    quality: getQualityLabel(variant.resolution),
-                    uri: new URL(variant.uri, url).toString(),
-                })).filter((format) => format.resolution !== 'Unknown Resolution');
-                formats.sort((a, b) => a.bandwidth - b.bandwidth);
-                setplaylist(formats);
+            const parsed = await FetchM3U8URL(url);
+            if (parsed) {
+                setplaylist(parsed);
             } else {
                 DownloadOnServer(url);
             }

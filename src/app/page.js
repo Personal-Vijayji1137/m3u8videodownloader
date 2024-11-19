@@ -3,6 +3,36 @@ import { sign } from "jsonwebtoken";
 import styles from "./page.module.css";
 import Link from "next/link";
 import Input from "./input";
+import { parse } from 'hls-parser';
+function getQualityLabel(resolution) {
+  if (!resolution) return 'Unknown';
+  const { height } = resolution;
+  if (height <= 240) return '240p';
+  if (height <= 360) return '360p';
+  if (height <= 480) return '480p';
+  if (height <= 720) return '720p';
+  if (height <= 1080) return '1080p';
+  if (height <= 1440) return '1440p';
+  return '2160p (4K)';
+}
+export const FetchM3U8URL = async (m3u8url) => {
+  const response = await fetch(m3u8url);
+  const text = await response.text();
+  const parsed = parse(text);
+  if (parsed.isMasterPlaylist) {
+    let formats = parsed.variants.map((variant) => ({
+      resolution: variant.resolution ? `${variant.resolution.width}x${variant.resolution.height}` : 'Unknown Resolution',
+      bandwidth: variant.bandwidth,
+      quality: getQualityLabel(variant.resolution),
+      uri: new URL(variant.uri, m3u8url).toString(),
+    })).filter((format) => format.resolution !== 'Unknown Resolution');
+    formats.sort((a, b) => a.bandwidth - b.bandwidth);
+    return(formats);
+  } else {
+    return null
+  }
+  return parsed;
+}
 function generateUniqueFileName() {
   const now = new Date();
   const year = now.getFullYear();
@@ -213,13 +243,13 @@ export default async function Home() {
         </div>
       </section>
       <section className={styles.alldescription}>
-        {data.map((item) => {
+        {data.map((item, index) => {
           if (item.description) {
-            return <p>{item.description}</p>
+            return <p key={index}>{item.description}</p>
           } else if (item.title) {
-            return <h1>{item.title}</h1>
+            return <h1 key={index}>{item.title}</h1>
           } else if (item.subtitle) {
-            return <h2>{item.subtitle}</h2>
+            return <h2 key={index}>{item.subtitle}</h2>
           }
         })}
       </section>
