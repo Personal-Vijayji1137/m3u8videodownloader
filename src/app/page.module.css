@@ -1,168 +1,363 @@
-.page {
-  --gray-rgb: 0, 0, 0;
-  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
-  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 20px;
+        border-bottom: 1px solid #333;
+    }
 
-  display: grid;
-  grid-template-rows: 20px 1fr 20px;
-  align-items: center;
-  justify-items: center;
-  min-height: 100svh;
-  padding: 80px;
-  gap: 64px;
-  font-family: var(--font-geist-sans);
-}
+    .title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: #ffffff;
+    }
 
-@media (prefers-color-scheme: dark) {
-  .page {
-    --gray-rgb: 255, 255, 255;
-    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
-    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
+    .nav {
+        display: flex;
+        gap: 20px;
+    }
 
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-  }
-}
+    .nav a {
+        color: #e0e0e0;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
 
-.main {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  grid-row-start: 2;
-}
+    .nav a:hover {
+        color: #ffffff;
+    }
 
-.main ol {
-  font-family: var(--font-geist-mono);
-  padding-left: 0;
-  margin: 0;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: -0.01em;
-  list-style-position: inside;
-}
+    .githubButton {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px;
+        margin-top: 2rem;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #fff;
+        background-color: transparent;
+        border: 1px solid #444;
+        border-radius: 25px;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+    }
 
-.main li:not(:last-of-type) {
-  margin-bottom: 8px;
-}
+    .githubButton strong {
+        font-weight: bold;
+        color: #fff;
+    }
 
-.main code {
-  font-family: inherit;
-  background: var(--gray-alpha-100);
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-weight: 600;
-}
+    .githubButton:hover {
+        background-color: #444;
+        color: #ddd;
+    }
 
-.ctas {
-  display: flex;
-  gap: 16px;
-}
+    .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+    }
 
-.ctas a {
-  appearance: none;
-  border-radius: 128px;
-  height: 48px;
-  padding: 0 20px;
-  border: none;
-  border: 1px solid transparent;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
-}
+    .subtitle {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        font-size: 6rem;
+        line-height: 1;
+        font-weight: 700;
+        text-align: center;
+        color: transparent;
+        letter-spacing: -.025em;
+        -webkit-background-clip: text;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        background-clip: text;
+        --tw-gradient-to: #fff;
+        --tw-gradient-from: hsla(240, 5%, 96%, .5);
+        --tw-gradient-to: hsl(240, 5%, 96%);
+        --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+        background-image: linear-gradient(to top, var(--tw-gradient-stops));
+    }
 
-a.primary {
-  background: var(--foreground);
-  color: var(--background);
-  gap: 8px;
-}
+    .description {
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+        text-align: center;
+        max-width: 60vw;
+        padding: 30px 0;
+        line-height: 1.25rem;
+        margin-top: 1.5rem;
+        --tw-text-opacity: 1;
+        color: rgb(82 82 91 / var(--tw-text-opacity))
+    }
 
-a.secondary {
-  border-color: var(--gray-alpha-200);
-  min-width: 180px;
-}
+    .statsSection {
+        margin-top: 50px;
+        text-align: center;
+        color: #e0e0e0;
+    }
 
-.footer {
-  grid-row-start: 3;
-  display: flex;
-  gap: 24px;
-}
+    .statsTitle {
+        font-size: 3rem;
+        line-height: 2.25rem;
+        font-weight: 700;
+        text-align: center;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        margin-bottom: 20px;
+        --tw-text-opacity: 1;
+        color: rgb(212 212 216 / var(--tw-text-opacity));
+    }
 
-.footer a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+    .statsContainer {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 5rem 0;
+    }
 
-.footer img {
-  flex-shrink: 0;
-}
+    .stat {
+        text-align: center;
+    }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
+    .statNumber {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #ffffff;
+    }
 
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
+    .statLabel {
+        font-size: 1rem;
+        color: #aaaaaa;
+    }
 
-  .footer a:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-  }
-}
+    .projectContainer {
+        background-color: #1e1e1e00;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
+        width: 90vw;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
 
-@media (max-width: 600px) {
-  .page {
-    padding: 32px;
-    padding-bottom: 80px;
-  }
+    .projectTitle {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #ffffff;
+    }
 
-  .main {
-    align-items: center;
-  }
+    .progressBarContainer {
+        background-color: #333;
+        border-radius: 5px;
+        overflow: hidden;
+        height: 25px;
+    }
 
-  .main ol {
-    text-align: center;
-  }
+    .progressBar {
+        height: 100%;
+        background-color: #4caf50;
+        text-align: center;
+        line-height: 25px;
+        color: #fff;
+        width: 0;
+        transition: width 3s ease-in-out;
+    }
 
-  .ctas {
-    flex-direction: column;
-  }
+    .footer {
+        margin-top: 40px;
+        padding: 20px 0;
+        background-color: #11111100;
+        text-align: center;
+    }
 
-  .ctas a {
-    font-size: 14px;
-    height: 40px;
-    padding: 0 16px;
-  }
+    .footerText {
+        font-size: 1rem;
+        color: #e0e0e070;
+    }
 
-  a.secondary {
-    min-width: auto;
-  }
+    .footerText a {
+        color: #ffffff65;
+        text-decoration: none;
+    }
 
-  .footer {
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
-}
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-}
+    .downloadContainer {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 20px auto;
+    }
+
+    .downloadInput {
+        flex: 1;
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #cccccc36;
+        border-radius: 4px;
+        color: white;
+        outline: none;
+        background-color: transparent;
+    }
+
+    .downloadButton {
+        padding: 10px 15px;
+        font-size: 1rem;
+        color: #fff;
+        background-color: #ffffff17;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .downloadButton:hover {
+        background-color: #ffffff44;
+    }
+
+    .ContainerofInputer {
+        width: 800px;
+    }
+
+    .playlistContainer {
+        width: 100%;
+        margin-top: 5rem;
+    }
+
+    .playlistContainer>div>div {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1rem;
+        align-items: center;
+        padding-left: 10px;
+        border: 1px solid #cccccc36;
+        border-radius: 4px;
+        margin: 1rem 0;
+        color: white;
+        outline: none;
+        background-color: transparent;
+    }
+
+    .alldescription {
+        padding: 2rem;
+    }
+
+    .alldescription>h1 {
+        margin-top: 3rem;
+        font-size: 2rem;
+        --tw-text-opacity: 1;
+        color: rgb(212 212 216 / var(--tw-text-opacity));    }
+
+    .alldescription>h2 {
+        color: #ffffffb2;
+        margin-top: 2rem;
+    }
+
+    .alldescription>p {
+        margin-top: 1rem;
+        color: #ffffff65;
+    }
+
+    @media only screen and (max-width: 900px) {
+        .header{
+            padding: 10px;
+        }
+        .title{
+            font-size: 2rem;
+        }
+        .subtitle{
+            font-size: 3rem;
+        }
+        .description{
+            font-size: 1rem;
+        }
+        .ContainerofInputer{
+            width: 500px;
+        }
+        .statsTitle{
+            font-size: 2rem;
+        }
+        .alldescription{
+            padding: 1rem;
+        }
+        .alldescription > h1{
+            font-size: 1.5rem;
+        }
+        .alldescription > h2{
+            font-size: 1.3rem;
+        }
+    }
+    @media only screen and (max-width: 600px) {
+        .header{
+            padding: 20px 5px;
+        }
+        .main{
+            padding: 0px;
+            width: 100vw;
+        }
+        .nav{
+            gap: 10px;
+        }
+        .nav a{
+            font-size: 0.8rem;
+        }
+        .downloadInput{
+            width: 90%;
+        }
+        .title{
+            font-size: 1.2rem;
+        }
+        .subtitle{
+            font-size: 2.5rem;
+        }
+        .githubButton{
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            margin-bottom: 2rem;
+        }
+        .description{
+            font-size: 0.8rem;
+            max-width: 90vw;
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+        .ContainerofInputer{
+            width: 90vw;
+        }
+        .statsTitle{
+            font-size: 1.5rem;
+        }
+        .statsSection{
+            margin-top: 1rem;
+        }
+        .statNumber{
+            font-size: 1.3rem;
+        }
+        .statLabel{
+            font-size: 0.8rem;
+        }
+        .statsContainer{
+            margin: 2rem 0;
+        }
+        .alldescription{
+            padding: 0.5rem;
+        }
+        .alldescription > h1{
+            font-size: 1.2rem;
+        }
+        .alldescription > h2{
+            font-size: 1rem;
+        }
+        .alldescription > p{
+            font-size: 0.8rem;
+        }
+    }
